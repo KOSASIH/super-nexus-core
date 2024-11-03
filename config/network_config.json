@@ -1,0 +1,37 @@
+{
+  "networks": {
+    "mainnet": {
+      "name": "Main Network",
+      "rpc_url": "https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID",
+      "chain_id": 1,
+      "explorer_url": "https://etherscan.io",
+      "native_currency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      }
+    },
+    "testnet": {
+      "name": "Ropsten Test Network",
+      "rpc_url": "https://ropsten.infura.io/v3/YOUR_INFURA_PROJECT_ID",
+      "chain_id": 3,
+      "explorer_url": "https://ropsten.etherscan.io",
+      "native_currency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      }
+    },
+    "rinkeby": {
+      "name": "Rinkeby Test Network",
+      "rpc_url": "https://rinkeby.infura.io/v3/YOUR_INFURA_PROJECT_ID",
+      "chain_id": 4,
+      "explorer_url": "https://rinkeby.etherscan.io",
+      "native_currency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      }
+    }
+  }
+}
