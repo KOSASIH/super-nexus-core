@@ -1,0 +1,49 @@
+# config.yaml - Main configuration file for the blockchain application
+
+# Application settings
+app:
+  name: "BlockchainApp"
+  version: "1.0.0"
+  environment: "development"  # Options: development, testing, production
+  port: 3000                   # Port for the API server
+
+# Database settings
+database:
+  type: "postgresql"           # Database type (e.g., postgresql, mysql, sqlite)
+  host: "localhost"            # Database host
+  port: 5432                   # Database port
+  username: "db_user"         # Database username
+  password: "secure_password"  # Database password
+  name: "blockchain_db"        # Database name
+  pool:
+    max: 10                    # Maximum number of connections in the pool
+    min: 2                     # Minimum number of connections in the pool
+    idle_timeout: 30000        # Idle timeout in milliseconds
+
+# Logging settings
+logging:
+  level: "info"                # Logging level (e.g., debug, info, warn, error)
+  file: "logs/app.log"         # Log file path
+  max_size: 10MB                # Maximum size of log file before rotation
+  max_files: 5                 # Maximum number of log files to keep
+
+# Blockchain settings
+blockchain:
+  node_url: "http://localhost:8545"  # URL of the blockchain node
+  gas_limit: 8000000            # Default gas limit for transactions
+  gas_price: "20000000000"      # Default gas price in wei
+
+# Security settings
+security:
+  jwt_secret: "your_jwt_secret"  # Secret key for JWT authentication
+  enable_https: true              # Enable HTTPS (true/false)
+  cors:
+    enabled: true                  # Enable CORS (true/false)
+    allowed_origins:               # List of allowed origins
+      - "http://localhost:3000"
+      - "https://yourdomain.com"
+
+# Feature flags
+features:
+  enable_feature_x: true          # Enable or disable feature X
+  enable_feature_y: false         # Enable or disable feature Y
