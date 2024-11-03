@@ -1,0 +1,35 @@
+version: '3.8'  # Specify the Docker Compose version
+
+services:
+  app:
+    build:
+      context: .  # Build the Dockerfile in the current directory
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"  # Map port 3000 of the container to port 3000 on the host
+    environment:
+      NODE_ENV: development  # Set the environment variable for the application
+      DATABASE_URL: postgres://db_user:secure_password@db:5432/blockchain_db  # Database connection string
+      BLOCKCHAIN_NODE_URL: http://blockchain_node:8545  # URL of the blockchain node
+    depends_on:
+      - db  # Ensure the database service is started before the app
+
+  db:
+    image: postgres:13  # Use the official PostgreSQL image
+    restart: always  # Restart the container if it stops
+    environment:
+      POSTGRES_USER: db_user  # Database username
+      POSTGRES_PASSWORD: secure_password  # Database password
+      POSTGRES_DB: blockchain_db  # Database name
+    volumes:
+      - db_data:/var/lib/postgresql/data  # Persist database data
+
+  blockchain_node:
+    image: ethereum/client-go:latest  # Use the official Go Ethereum client
+    restart: always
+    ports:
+      - "8545:8545"  # Expose the Ethereum RPC port
+    command: ["--rpc", "--rpcaddr", "0.0.0.0", "--rpcapi", "eth,net,web3"]  # Start the Ethereum client with RPC enabled
+
+volumes:
+  db_data:  # Define a named volume for the database
